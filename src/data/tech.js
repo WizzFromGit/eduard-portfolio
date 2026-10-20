@@ -1,0 +1,17 @@
+export const TECH_STACK = [
+  { name: 'HTML', icon: 'Code' },
+  { name: 'CSS', icon: 'Code2' },
+  { name: 'JavaScript', icon: 'FileCode' },
+  { name: 'React', icon: 'Layers' },
+  { name: 'React Native', icon: 'Smartphone' },
+  { name: 'Node.js', icon: 'Server' },
+  { name: 'Laravel', icon: 'Code2' },
+  { name: 'PHP', icon: 'FileCode' },
+  { name: 'MySQL', icon: 'Database' },
+  { name: 'Tailwind CSS', icon: 'Layers' },
+  { name: 'C#', icon: 'ShieldCheck' },
+  { name: 'Git / GitHub', icon: 'GitBranch' },
+  { name: 'Jira', icon: 'Layout' },
+  { name: 'Testing', icon: 'Rocket' },
+  { name: 'Terminal', icon: 'Terminal' },
+]

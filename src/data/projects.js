@@ -1,0 +1,70 @@
+export const PROJECTS = [
+  {
+    id: 'pnph-system',
+    title: 'PNPh-System',
+    category: 'Internal System',
+    description:
+      'Maintained and supported internal organizational systems, ensuring stability, performance, and reliability. Monitored system functionality, resolved technical issues, and implemented improvements to enhance operational efficiency.',
+    images: [
+      '/project-img/pn-system/system-loginpage.jpeg',
+      '/project-img/pn-system/admindashboard.jpeg',
+      '/project-img/pn-system/adminandtrainingmenu.jpeg',
+      '/project-img/pn-system/studentdashboard.jpeg',
+      '/project-img/pn-system/studentmenu.jpeg',
+      '/project-img/pn-system/trainingdashboard.jpeg',
+    ],
+    tech: ['C#', 'Laravel', 'MySQL', 'Jira'],
+    status: 'Active',
+    statusColor: 'default',
+  },
+  {
+    id: 'safe-app',
+    title: 'Children of Asia - SAFE app',
+    category: 'Mobile',
+    description:
+      'Cross-platform mobile application built to support children and family services, developed with React Native and PHP.',
+    images: [
+      '/project-img/safe-app/homepage.jpeg',
+      '/project-img/safe-app/onboarding1.jpeg',
+      '/project-img/safe-app/onboarding2.jpeg',
+      '/project-img/safe-app/feature.jpeg',
+      '/project-img/safe-app/character.jpeg',
+      '/project-img/safe-app/tuts.jpeg',
+    ],
+    tech: ['React Native', 'PHP'],
+    status: 'Completed',
+    statusColor: 'secondary',
+  },
+  {
+    id: 'raffi-gsk-app',
+    title: 'RAFI - GSK app',
+    category: 'Mobile',
+    description:
+      'Cross-platform mobile application developed for RAFI-GSK initiatives, built with React Native and Node.js.',
+    images: ['/project-img/gsk/rafi-home.jpeg'],
+    tech: ['React Native', 'Node.js'],
+    status: 'Completed',
+    statusColor: 'secondary',
+  },
+  {
+    id: 'quiz-builder',
+    title: 'Quiz Builder',
+    category: 'Web Application',
+    description:
+      'A full-featured quiz and assessment platform with separate dashboards for trainers and students, including quiz creation, grading, and result tracking.',
+    images: [
+      '/project-img/quiz-builder/qz-login.jpeg',
+      '/project-img/quiz-builder/admin.jpeg',
+      '/project-img/quiz-builder/createquiz.jpeg',
+      '/project-img/quiz-builder/trainerdashboard.jpeg',
+      '/project-img/quiz-builder/trainertools.jpeg',
+      '/project-img/quiz-builder/studentdashboard.jpeg',
+      '/project-img/quiz-builder/mc.jpeg',
+      '/project-img/quiz-builder/results-trainer.jpeg',
+      '/project-img/quiz-builder/studentresults.jpeg',
+    ],
+    tech: ['React', 'Node.js', 'MySQL'],
+    status: 'Completed',
+    statusColor: 'secondary',
+  },
+]
