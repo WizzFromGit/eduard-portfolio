@@ -34,15 +34,38 @@ const INFO = [
 export default function Contact() {
   const [submitting, setSubmitting] = useState(false)
   const [sent, setSent] = useState(false)
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitting(true)
-    setTimeout(() => {
+
+    const formData = new FormData(e.target)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSent(true)
+        e.target.reset()
+      } else {
+        alert(result.message || 'Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      alert('Something went wrong. Please try again or email me directly.')
+    } finally {
       setSubmitting(false)
-      setSent(true)
-    }, 1200)
+    }
   }
 
   if (sent) {
@@ -68,12 +91,7 @@ export default function Contact() {
           <p className="text-muted-foreground mt-2">
             Thanks for reaching out. I&rsquo;ll get back to you shortly.
           </p>
-          <Button
-            onClick={() => {
-              setSent(false)
-              setForm({ name: '', email: '', message: '' })
-            }}
-          >
+          <Button onClick={() => setSent(false)}>
             Send another
           </Button>
         </motion.div>
@@ -101,10 +119,10 @@ export default function Contact() {
             <CardContent className="p-0 md:p-8">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid gap-4 md:grid-cols-2">
-                  {renderField('Full Name', 'Eduard Jhon Sarmiento', 'name')}
-                  {renderField('Email', 'email', 'you@example.com', 'email', form.email)}
+                  {renderField('Full Name', 'text', 'Eduard Jhon Sarmiento', 'name')}
+                  {renderField('Email', 'email', 'you@example.com', 'email')}
                 </div>
-                {renderField('Message', 'textarea', 'Tell me about your project...', 'message', form.message, 5)}
+                {renderField('Message', 'textarea', 'Tell me about your project...', 'message', 5)}
                 <Button type="submit" disabled={submitting} className="w-full">
                   {submitting ? 'Sending...' : 'Send Message'}
                 </Button>
@@ -120,7 +138,7 @@ export default function Contact() {
   )
 }
 
-function renderField(label, typeOrAs, placeholder, name, value, rows) {
+function renderField(label, typeOrAs, placeholder, name, rows) {
   const isTextarea = typeOrAs === 'textarea'
   return (
     <div key={name} className="space-y-2">
@@ -128,18 +146,20 @@ function renderField(label, typeOrAs, placeholder, name, value, rows) {
       {isTextarea ? (
         <textarea
           id={name}
+          name={name}
           placeholder={placeholder}
-          defaultValue={value || ''}
           rows={rows}
           className="flex w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          required
         />
       ) : (
         <input
           id={name}
+          name={name}
           type={typeOrAs}
           placeholder={placeholder}
-          defaultValue={value || ''}
           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          required
         />
       )}
     </div>
